@@ -21,23 +21,25 @@ npm install @strapi/provider-upload-aws-s3
 Add the folling lines of code in the file: `config/plugins.js`
 
 ```js
-upload: {
-	config: {
-		provider:  "provider-upload-aws-s3-cf",
-		providerOptions: {
-			s3Options: {
-				accessKeyId:  env("AWS_ACCESS_KEY_ID"),
-				secretAccessKey:  env("AWS_ACCESS_SECRET"),
-				region:  env("AWS_REGION"),
-				params: {
-					signedUrlExpires:  env("AWS_SIGNED_URL_EXPIRES", 15  *  60),
-					Bucket:  env("AWS_BUCKET"),
-				},
-				cdn:  env("AWS_CDN"),
-			},
-		},
-	},
-},
+module.exports = ({ env }) => ({
+  upload: {
+    config: {
+      provider: "provider-upload-aws-s3-cf",
+      providerOptions: {
+        s3Options: {
+          accessKeyId: env("AWS_ACCESS_KEY_ID"),
+          secretAccessKey: env("AWS_ACCESS_SECRET"),
+          region: env("AWS_REGION"),
+          params: {
+            signedUrlExpires: env("AWS_SIGNED_URL_EXPIRES", 15 * 60),
+            Bucket: env("AWS_BUCKET"),
+          },
+          cdn: env("AWS_CDN"),
+        },
+      },
+    },
+  },
+});
 ```
 
 # Configure the Strapi Security
@@ -64,6 +66,16 @@ Add the folling lines of code in the file: `config/middlewares.js`. You can comm
       },
     },
 }
+```
+
+# Update .env
+
+```
+AWS_ACCESS_KEY_ID=<>
+AWS_ACCESS_SECRET=<>
+AWS_REGION=<>
+AWS_BUCKET=<>
+AWS_CDN=<>
 ```
 
 # Report Bugs/
