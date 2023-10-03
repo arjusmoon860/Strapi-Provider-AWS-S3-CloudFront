@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/provider-upload-aws-s3-cf",
+  "name": "provider-upload-aws-s3-cf",
   "version": "4.1.10",
   "description": "AWS S3 & Cloudfront provider for strapi upload",
   "keywords": [
